@@ -119,6 +119,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# saját beállítás bármilyen projektbe átvihető
+STATICFILES_DIRS = [BASE_DIR / "static_dev"]
+
 STATIC_ROOT = BASE_DIR / "static"
 
 MEDIA_URL = "/media/"
