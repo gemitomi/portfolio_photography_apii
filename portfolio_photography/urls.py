@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("pages.urls"))
+    # path('api-auth/', include('rest_framework.urls'))  // csak akkor kell ha usereket akarunk használni
 ]
 
 if settings.DEBUG:
