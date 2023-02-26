@@ -46,6 +46,13 @@ class About(models.Model):
     def __str__(self) -> str:
         return self.text[:10]
 
+class LandingPage(models.Model):
+    title = models.CharField(max_length=200)
+    slogen = models.TextField(max_length=1000)
+
+    def __str__(self) -> str:
+        return self.title
+
 class Categories(models.Model):
     name = models.CharField(max_length=200)
 

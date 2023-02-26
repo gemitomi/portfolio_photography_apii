@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 import random
 
-from .models import SiteInfo, About, Categories, Photo
+from .models import SiteInfo, About, Categories, Photo, LandingPage
 
 class SiteInfoView(APIView):
     permission_classes = [AllowAny]
@@ -20,6 +20,35 @@ class SiteInfoView(APIView):
                 "email": data[0].email
             }
         )
+
+class LandingPageView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        data = LandingPage.objects.all()
+        if not data:
+            return Response("No data for LandingPage")
+        
+        return Response(
+            {
+                "images": self.get_images(),
+                "title": data[0].title,
+                "slogen": data[0].slogen
+            }
+        )
+    
+    def get_images(self):
+        photos = Photo.objects.all()
+        if not photos:
+            return []
+        
+        photo_list = [
+            f"{self.request.build_absolute_uri('/')[:-1]}{i.image.url}" #azért kell a self mert a metodusba nem jön be a request
+            for i in photos
+        ]        
+        random.shuffle(photo_list) # összekeveri a fotókat
+
+        return photo_list[:6]
 
 class AboutView(APIView):
     permission_classes = [AllowAny]
