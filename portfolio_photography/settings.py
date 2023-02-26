@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
 
-    "pages"
+    "pages",
+    'django_cleanup.apps.CleanupConfig'
 ]
 
 REST_FRAMEWORK = {
