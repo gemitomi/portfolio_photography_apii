@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
+from rest_framework import status
 import random
 
 from .models import SiteInfo, About, Categories, Photo, LandingPage
@@ -104,6 +105,21 @@ class GalleryView(APIView):
             })
 
         return Response(response_data)
+
+class ContactView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        post_data = request.data
+
+        name = post_data.get("name")
+        email = post_data.get("email")
+        phone = post_data.get("phone")
+        message = post_data.get("message")
+
+        print(name, email, phone, message)
+
+        return Response("Ok", status.HTTP_202_ACCEPTED)
 
 
 
