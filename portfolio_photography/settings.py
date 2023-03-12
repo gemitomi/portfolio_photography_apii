@@ -73,7 +73,7 @@ ROOT_URLCONF = 'portfolio_photography.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "react/build"],  # beállitjuk az index.html elérhetőségét
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,7 +137,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # saját beállítás bármilyen projektbe átvihető
-STATICFILES_DIRS = [BASE_DIR / "static_dev"]
+STATICFILES_DIRS = [BASE_DIR / "react/build/static"]     # itt be kell irni mert ebben a mapában lévő css és js filok kellenek az induláshoz
 
 STATIC_ROOT = BASE_DIR / "static"
 
