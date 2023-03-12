@@ -2,7 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework import status
-import random
+from django.core.mail import send_mail
+import random, time
 
 from .models import SiteInfo, About, Categories, Photo, LandingPage
 
@@ -117,7 +118,15 @@ class ContactView(APIView):
         phone = post_data.get("phone")
         message = post_data.get("message")
 
-        print(name, email, phone, message)
+        time.sleep(3)
+        
+        send_mail(
+            f"Contact: {name}", # subject
+            f"{message}\n\nPhone: {phone}",  # message
+            email,  # mail from
+            ["info@webrabbit.hu"], # mail to
+            fail_silently=False
+        )
 
         return Response("Ok", status.HTTP_202_ACCEPTED)
 

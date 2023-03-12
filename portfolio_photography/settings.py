@@ -149,6 +149,6 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Email - azért kell ez h a konzolon jelenjen meg az mail
+# Email - azért kell ez h a konzolon jelenjen meg az mail, ide kell majd beírni publikálás után a szolgáltató által megadott beállításokat
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
