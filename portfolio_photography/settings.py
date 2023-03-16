@@ -55,6 +55,7 @@ REST_FRAMEWORK = {
 # ha valaki post requstet küld egy végpontra akkor ez dönti el h hogy fogadja el a rest framework
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000"
+    "https://tomtrone.pythonanywhere.com"
 ]
 
 MIDDLEWARE = [
